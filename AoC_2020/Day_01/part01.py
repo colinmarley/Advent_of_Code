@@ -1,3 +1,8 @@
+# Colin Marley
+# Advent of Code 2020 (Quarantine Edition)
+# Day 01 (December 01 2020)
+# Part 1
+
 # Global Array to hold the numbers as ints after being read in as str
 ints = []
 solution_exists = False
