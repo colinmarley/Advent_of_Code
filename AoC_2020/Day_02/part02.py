@@ -32,4 +32,4 @@ for line in lines:
         total_valid += 1
     
 # Print total number of valid passwords found
-print(total_valid)
+print("Total Valid Passwords: " + str(total_valid))

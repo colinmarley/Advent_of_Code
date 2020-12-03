@@ -62,8 +62,3 @@ for i in range(len(RIGHT_VALUES)):
 
 # display answer
 print("tree_product: " + str(tree_product))
-
-
-
-
-

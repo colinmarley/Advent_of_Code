@@ -23,6 +23,8 @@ for line in lines:
             count += 1
     if count >= min_occurances and count <= max_occurances:
         total_valid += 1
-        print(password)
 
-print(total_valid)
+        # For testing puposes
+        # print(password)
+
+print("Total Valid Passwords: " + str(total_valid))
