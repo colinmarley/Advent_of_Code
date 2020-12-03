@@ -1,3 +1,8 @@
+# Colin Marley
+# Advent of Code 2020 (Quarantine Edition)
+# Day 02 (December 02 2020)
+# Part 2
+
 #Global Variables/Constants
 total_valid = 0
 INPUT_FILE = "input_pt1.txt"
