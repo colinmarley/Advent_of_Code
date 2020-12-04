@@ -35,7 +35,7 @@ for i in range(0, len(ints)):
                 solution_exists = True
                 print("First Number (A): " + str(a))
                 print("Second Number (B): " + str(b))
-                print("Second Number (C): " + str(c))
+                print("Third Number (C): " + str(c))
                 print("A-Index: " + str(i))
                 print("B-Index: " + str(j))
                 print("C-Index: " + str(k))
