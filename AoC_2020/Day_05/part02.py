@@ -1,7 +1,7 @@
 # Colin Marley
 # Advent of Code 2020 (Quarantine Edition)
-# Day 04 (December 04 2020)
-# Part 1
+# Day 05 (December 05 2020)
+# Part 2
 
 INPUT_FILE = "input_pt1.txt"
 
