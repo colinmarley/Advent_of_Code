@@ -14,12 +14,12 @@ with open(INPUT_FILE, 'r') as file:
 curr_i = 0
 total_acc = 0
 visited = []
-switched_is = []
+sw_is = []
 
-switched_i = 0
-switched_acc = 0
-switched_visited = []
-switched = False
+sw_i = 0
+sw_acc = 0
+sw_visited = []
+sw = False
 rerun = False
 
 def copy_arr(a1, a2):
@@ -29,12 +29,12 @@ def copy_arr(a1, a2):
 
 for i in range(len(lines)):
     visited.append(False)
-    switched_visited.append(False)
+    sw_visited.append(False)
 
 
 while curr_i < len(lines):
 
-    print(curr_i)
+    # print(curr_i, sw)
     if not visited[curr_i]:
         visited[curr_i] = True
 
@@ -46,63 +46,64 @@ while curr_i < len(lines):
             total_acc += argument
             curr_i += 1
         elif instruction == "jmp":
-            if not switched:
-                if not curr_i in switched_is:
-                    print("a: " + str(argument))
+            if not sw:
+                if not curr_i in sw_is:
+                    # print("Switched at i = " + str(curr_i) + ", (" +instruction+ ", " + str(argument) + ")")
+                    sw = True
+                    sw_is.append(curr_i)
+                    sw_acc = total_acc
+                    sw_instruction = instruction
+                    sw_argument = argument
+                    sw_i = curr_i
                     curr_i += 1
-                    switched = True
-                    switched_is.append(curr_i)
-                    switched_acc = total_acc
-                    switched_instruction = instruction
-                    switched_argument = argument
-                    switched_i = curr_i
+                    # print("sw_i: " + str(sw_i))
                     # visited[curr_i] = False
-                    switched_visited = copy_arr(visited, switched_visited)
+                    sw_visited = copy_arr(visited, sw_visited)
                 else:
                     curr_i += argument
             else:
                 curr_i += argument
         elif instruction == "nop":
-            if not switched:
-                if not curr_i in switched_is:
+            if not sw:
+                if not curr_i in sw_is:
+
+                    # print("Switched at i = " + str(curr_i) + ", (" +instruction+ ", " + str(argument) + ")")
+                    sw = True
+
+                    sw_is.append(curr_i)
+                    sw_acc = total_acc
+                    sw_instruction = instruction
+                    sw_argument = argument
+                    sw_i = curr_i
                     curr_i += argument
-                    switched = True
-                    switched_is.append(curr_i)
-                    switched_acc = total_acc
-                    switched_instruction = instruction
-                    switched_argument = argument
-                    switched_i = curr_i
+                    
+                    # print("sw_i: " + str(sw_i))
                     # visited[curr_i] = False
-                    switched_visited = copy_arr(visited, switched_visited)
+                    sw_visited = copy_arr(visited, sw_visited)
                 else:
                     curr_i += 1
             else:
                 curr_i += 1
     else:
         
-        if not switched:
+        if not sw:
             print("Cycle encountered...")
             print("i: " + str(curr_i))
             print('SOMETHING UNEXPECTED')
             print("argument: " + str(argument))
-            print("Switched Instruction: " + switched_instruction)
-            print("Switched Argument: " + str(switched_argument))
+            print("sw Instruction: " + sw_instruction)
+            print("sw Argument: " + str(sw_argument))
             break
         else:
-            switched = False
-            curr_i = switched_i
-            total_acc = switched_acc
-            visited = copy_arr(switched_visited, visited)
+            # print("Cycle encountered...")
+            # print("i: " + str(curr_i))
+            sw = False
+            curr_i = sw_i
+            total_acc = sw_acc
+            visited = copy_arr(sw_visited, visited)
             visited[curr_i] = False
             # visited[curr_i] = False
             # rerun = True
 
 print("Accumulator Value: " + str(total_acc))
-print("Switched index: " + str(switched_i))
-print("rerun: " + str(rerun))
-
-
-
-
-
-
+print("sw index: " + str(sw_i))
