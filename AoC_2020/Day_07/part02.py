@@ -42,11 +42,6 @@ for line in lines:
         'numbags': 1
     }
 
-
-# for rule in rules:
-#     print(rule)
-#     print(rules[rule])
-
 valid_bags = {}
 
 def find_valid(bag, root):
@@ -68,9 +63,7 @@ def find_valid(bag, root):
 answer = 0
 for i in rules['shinygoldbag']['from']:
     answer += find_valid(i, True) * int(rules['shinygoldbag']['from'][i])
-
-    
+   
 print(answer)
-print(rules['shinygoldbag'])
 
     
